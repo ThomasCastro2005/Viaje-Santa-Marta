@@ -20,6 +20,15 @@ export default function CostCalculator({ confirmedCount, accommodations }: CostC
   const [dropOpen,      setDropOpen]      = useState(false);
   const dropRef = useRef<HTMLDivElement>(null);
 
+  // Must be before any early return to satisfy rules-of-hooks
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (dropRef.current && !dropRef.current.contains(e.target as Node)) setDropOpen(false);
+    }
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, []);
+
   const acc   = accommodations.find((a) => a.id === selectedAccId) ?? accommodations[0] ?? null;
   if (!acc) return null;
   const total = acc.price_per_night * TRIP_NIGHTS;
@@ -30,14 +39,6 @@ export default function CostCalculator({ confirmedCount, accommodations }: CostC
 
   function decrement() { setCustomCount((n) => Math.max(1, n - 1)); }
   function increment() { setCustomCount((n) => Math.min(acc.max_guests, n + 1)); }
-
-  useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (dropRef.current && !dropRef.current.contains(e.target as Node)) setDropOpen(false);
-    }
-    document.addEventListener('mousedown', handleClick);
-    return () => document.removeEventListener('mousedown', handleClick);
-  }, []);
 
   function pick(id: string) {
     setSelectedAccId(id);

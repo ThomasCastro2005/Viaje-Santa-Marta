@@ -33,8 +33,6 @@ export default function AccommodationSection({
     ? Object.entries(voteCounts).sort((a, b) => b[1] - a[1])[0]?.[0]
     : null;
   const totalVotes  = votes.length;
-  const topVotedAcc = topVotedId ? accommodations.find((a) => a.id === topVotedId) ?? null : null;
-
   const userVotedAccId = currentMemberId
     ? votes.find((v) => v.member_id === currentMemberId)?.accommodation_id ?? null
     : null;

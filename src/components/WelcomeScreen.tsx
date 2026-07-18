@@ -151,7 +151,7 @@ export default function WelcomeScreen({ members, onSelect }: WelcomeScreenProps)
               <div className="max-h-60 overflow-y-auto overscroll-contain">
                 {filtered.length === 0 ? (
                   <div className="px-4 py-6 text-center">
-                    <p className="font-body text-white/30 text-sm">No se encontró "{search}"</p>
+                    <p className="font-body text-white/30 text-sm">No se encontró &ldquo;{search}&rdquo;</p>
                   </div>
                 ) : (
                   filtered.map((m) => {

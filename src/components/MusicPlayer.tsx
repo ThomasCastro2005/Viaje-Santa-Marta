@@ -4,9 +4,8 @@ import { useEffect, useRef, useState } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 export default function MusicPlayer() {
-  const audioRef  = useRef<HTMLAudioElement | null>(null);
-  const [playing, setPlaying] = useState(false);
-  const [ready,   setReady]   = useState(false);
+  const audioRef   = useRef<HTMLAudioElement | null>(null);
+  const [playing,  setPlaying] = useState(false);
   const startedRef = useRef(false);
 
   // Create audio element once
@@ -16,8 +15,6 @@ export default function MusicPlayer() {
     audio.volume     = 0.18;
     audio.preload    = 'auto';
     audioRef.current = audio;
-
-    audio.addEventListener('canplaythrough', () => setReady(true), { once: true });
 
     // Autostart on first user interaction
     function onFirstInteraction() {
