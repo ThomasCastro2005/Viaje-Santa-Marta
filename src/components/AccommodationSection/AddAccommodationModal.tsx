@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { X, Plus, AlertCircle, Upload, Video, Image, Loader2 } from 'lucide-react';
+import { X, Plus, AlertCircle, Upload, Video, Image as ImageIcon, Loader2 } from 'lucide-react';
 import { supabase } from '@/lib/supabase/client';
 import { FamilyMember } from '@/types';
 
@@ -247,7 +247,7 @@ export default function AddAccommodationModal({ currentMember, onClose, onAdded 
                 <div className="absolute bottom-2 left-2 bg-black/60 backdrop-blur-sm rounded-full px-2 py-1 flex items-center gap-1">
                   {mediaFile && isVideo(mediaFile)
                     ? <Video size={11} className="text-white" />
-                    : <Image size={11} className="text-white" />}
+                    : <ImageIcon size={11} className="text-white" />}
                   <span className="font-body text-[11px] text-white">{mediaFile?.name}</span>
                 </div>
               </div>
