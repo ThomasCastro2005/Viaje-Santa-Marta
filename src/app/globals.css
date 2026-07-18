@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+@theme {
+  /* ── Paleta de color ─────────────────────────── */
+  --color-bay:          #10566A;  /* bahía caribeña amigable */
+  --color-bay-mid:      #1E7A8E;
+  --color-bay-light:    #E3F2F6;
+  --color-sand:         #F7F3EE;  /* arena blanqueada */
+  --color-papaya:       #F4823A;  /* papaya madura — CTA principal */
+  --color-papaya-dark:  #D96820;
+  --color-papaya-light: #FEF0E4;
+  --color-jade:         #2DB87A;  /* confirmado */
+  --color-jade-light:   #E8F7F0;
+  --color-ink:          #1A2E35;  /* texto principal */
+  --color-mist:         #5C7A84;  /* texto secundario */
+
+  /* ── Tipografía ──────────────────────────────── */
+  --font-display: var(--font-poppins), ui-sans-serif, system-ui, sans-serif;
+  --font-body:    var(--font-nunito), ui-sans-serif, system-ui, sans-serif;
+
+  /* ── Radios ──────────────────────────────────── */
+  --radius-card: 1rem;
+  --radius-btn:  0.75rem;
+}
+
+/* ── Base ────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
+body {
+  background-color: #F7F3EE;
+  color: #1A2E35;
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 { font-family: var(--font-display); }
+
+input, select, textarea, button { font-family: var(--font-body); }
+
+/* ── Scrollbar ───────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; }
+::-webkit-scrollbar-track { background: #E3F2F6; }
+::-webkit-scrollbar-thumb { background: #1E7A8E; border-radius: 3px; }
+
+/* ── Focus ───────────────────────────────────────── */
+:focus-visible { outline: 2px solid #F4823A; outline-offset: 2px; border-radius: 4px; }
+
+/* ── Animations ──────────────────────────────────── */
+@keyframes float-y {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.6; transform: scale(0.9); }
+}
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-float   { animation: float-y 4s ease-in-out infinite; }
+.animate-dot     { animation: pulse-dot 2s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 0.5s ease-out both; }
+
+/* ── Utilities ───────────────────────────────────── */
+.tabular { font-variant-numeric: tabular-nums; }
